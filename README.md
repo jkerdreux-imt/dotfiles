@@ -1,10 +1,10 @@
 # Dotfiles
 
-This repo contains my configuration files for severals software. The main goal
-is to share my configuration with others.
+This repo contains my configuration files. The main goal is to share my
+configuration with others.
 
 This repo is an automatic extract from my [chezmoi](https://www.chezmoi.io/)
-repo (private). You can check out push.py to figure out how I do this.
+repo (private). You can check out `push.py` to figure out how I do this.
 
 My main shell for years is [Fish](https://fishshell.com/). I don't use extra
 plugins for the look and feel. The prompt is made by myself that's all. I mainly
@@ -14,8 +14,8 @@ config on all my devices (servers etc), so I don't want to install extra stuffs.
 I use `git sparse-ckout` to checkout only the needed files with `chezmoi`.
 
 Most config files try to load a local config, for device specific configuration.
-In example, Fish prompt color can be different from one machine to another, so
-Fish load local.fish file if present that overide the default configuration.
+Fish prompt color can be different from one host to another, so  Fish load
+`local.fish` file if present that override the default configuration.
 Same Hyprland or Kitty.
 
 The repos also contains special configs for every day use. `git` or `ssh` which

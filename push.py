@@ -9,6 +9,7 @@ BLACKLIST = [
     ".local/bin/chezmoi-clone",
     ".local/bin/chezmoi-token",
     ".local/bin/chezmoi-filter",
+    ".config/helix/languages.toml",
 ]
 
 DEST = os.path.join(os.environ["PWD"], "dotfiles")

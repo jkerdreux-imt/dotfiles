@@ -63,7 +63,7 @@
   },
   "cpu": {
     "format": "  {usage}%",
-    "on-click": "kitty --title popup -e htop"
+    "on-click": "kitty --title popup -e btop"
   },
   "memory": {
     "format": "󰍛 {percentage}%"

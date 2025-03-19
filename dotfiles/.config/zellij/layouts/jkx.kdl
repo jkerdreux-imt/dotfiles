@@ -1,0 +1,9 @@
+// ce layout fonctionne, mais il est impossible de changer de layout dynamiquement après
+// https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/layouts/compact.kdl
+
+layout {
+	pane size=1 borderless=true {
+    	plugin location="zellij:compact-bar"
+	}
+	pane
+}

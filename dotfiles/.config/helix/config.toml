@@ -1,0 +1,99 @@
+#theme = "bogster"
+theme = "jkx_tokyo"
+# theme = "tokyonight_moon"
+
+[editor]
+color-modes = true
+bufferline = "always"
+cursorline = true
+popup-border = "all"
+true-color = true
+# rulers=[100]
+end-of-line-diagnostics = "disable"
+# gutters = ["diagnostics", "spacer", "line-numbers", "spacer", "diff"]
+gutters = ["diff", "diagnostics","spacer"]
+completion-replace = true
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+# other-lines = "error"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = true
+
+[editor.indent-guides]
+render = false
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control", "file-name", "read-only-indicator"]
+right = ["diagnostics", "selections", "register", "position", "total-line-numbers", "file-type"]
+separator = " >"
+
+
+[editor.lsp]
+auto-signature-help = false
+display-messages = true
+display-inlay-hints = false # disable by default but can be enable w/ c-t
+
+
+[keys.normal]
+C-s = ":w"
+C-q = ":q!"
+C-v = "paste_before"
+C-t = ":toggle-option lsp.display-inlay-hints"
+# nvim compat, but not mandatory, leader-b/p are the same
+C-x = ":buffer-close"
+C-b = "buffer_picker"
+C-p = "file_picker"
+C-r = ":rla"
+# LSP
+F1 = "hover"
+F2 = "rename_symbol"
+F5 = "workspace_diagnostics_picker"
+F9 = "goto_reference"
+F10 = "symbol_picker"
+F12 = "goto_definition"
+# navigation
+C-down = "goto_next_paragraph"
+C-up = "goto_prev_paragraph"
+C-right = "move_next_long_word_start"
+C-left = "move_prev_long_word_end"
+# windows
+C-pageup = ":buffer-next"
+C-pagedown = ":buffer-previous"
+"C-/" = ":run-shell-command zellij run -fc -x 1% -y 60% --width 98% --height 40% -- fish"
+# selection 
+"C-]" = "expand_selection"  # original alt-o / alt-i => collide w/ zellij
+"C-[" = "shrink_selection"
+"*" = ["move_char_right", "move_prev_word_start", "move_next_word_start", "search_selection"]
+# Lazygit
+# C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla", ":redraw",":toggle-option mouse",":toggle-option mouse"]
+C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla"]
+
+[keys.insert]
+C-s = ":w"
+C-q = ":q!"
+C-v = "paste_before"
+C-c = "toggle_comments"
+# LSP
+F9 = "goto_reference"
+F10 = "symbol_picker"
+F12 = "goto_definition"
+# navigation
+C-right = "move_next_long_word_start"
+C-left = "move_prev_long_word_end"
+# windows
+C-pageup = ":buffer-next"
+C-pagedown = ":buffer-previous"
+C-space = "completion"
+
+"C-/" = ":run-shell-command zellij run -fc -x 1% -y 60% --width 98% --height 40% -- fish"
+
+# create a new minor mode bound to 'r'
+# [keys.normal."r"]
+# g = ":run-shell-command zellij run -fc -x 5% -y 5% --width 90% --height 90% -- lazygit"

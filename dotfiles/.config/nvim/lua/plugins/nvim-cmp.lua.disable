@@ -1,0 +1,12 @@
+return {
+  "hrsh7th/nvim-cmp",
+  opts = {
+    window = {
+      completion = { border = "rounded" },
+      documentation = { border = "rounded" },
+    },
+    experimental = {
+      ghost_text = false, -- Désactive le Ghost Text
+    },
+  },
+}

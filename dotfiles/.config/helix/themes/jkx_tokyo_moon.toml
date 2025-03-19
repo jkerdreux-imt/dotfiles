@@ -1,0 +1,12 @@
+
+inherits = "tokyonight_moon"
+
+comment = { fg = "comment", modifiers = ["italic"] }
+function = { fg = "blue", modifiers = [] }
+keyword = { fg = "purple", modifiers = [] }
+"keyword.control.return" = { fg = "purple", modifiers = [] }
+"variable.parameter" = { fg = "yellow", modifiers = [] }
+"markup.italic" = { modifiers = ["italic"] }
+"ui.text.inactive" = { fg = "comment", modifiers = ["italic"] }
+
+"ui.menu" = { bg = "bg-menu", fg = "orange" }

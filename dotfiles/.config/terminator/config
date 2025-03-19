@@ -1,0 +1,53 @@
+[global_config]
+  focus = mouse
+  suppress_multiple_term_dialog = True
+[keybindings]
+  go_up = <Super>Up
+  go_down = <Super>Down
+  go_left = <Super>Left
+  go_right = <Super>Right
+  split_vert = <Primary><Shift>i
+  move_tab_right = <Primary><Super>Page_Down
+  move_tab_left = <Primary><Super>Page_Up
+  next_tab = <Primary><Shift>Page_Down
+  prev_tab = <Primary><Shift>Page_Up
+  new_window = <Primary><Alt>n
+  broadcast_off = <Primary><Super>equal
+  broadcast_all = <Primary>equal
+  layout_launcher = <Primary><Shift>l
+[profiles]
+  [[default]]
+    visible_bell = True
+    background_color = "#161c23"
+    background_darkness = 0.97
+    cursor_fg_color = "#2ec27e"
+    cursor_bg_color = "#deddda"
+    font = Terminess Nerd Font Mono Medium 13
+    foreground_color = "#deddda"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_lines = 1000
+    palette = "#2e3436:#ee0894:#26a269:#ffbe6f:#4b82d0:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#99c1f1:#ad7fa8:#34e2e2:#eeeeec"
+    use_system_font = False
+  [[Tokyo Night Storm]]
+    visible_bell = True
+    background_darkness = 0.97
+    cursor_fg_color = "#2ec27e"
+    cursor_bg_color = "#deddda"
+    font = Terminess Nerd Font Mono Medium 13
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_lines = 1000
+    use_system_font = False
+    background_color = "#24283b"
+    foreground_color = "#c0caf5"
+    palette = "#1d202f:#f7768e:#9ece6a:#e0af68:#7aa2f7:#bb9af7:#7dcfff:#a9b1d6:#414868:#f7768e:#9ece6a:#e0af68:#7aa2f7:#bb9af7:#7dcfff:#9d7cd8"
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]

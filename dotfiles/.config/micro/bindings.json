@@ -1,0 +1,21 @@
+{
+  "Alt-d": "command:definition",
+  "F12": "command:definition",
+  "F9": "command:references",
+  "Alt-r": "command:references",
+  "CtrlSpace": "command:lspcompletion",
+
+  "Alt-f": "command:format",
+  "Alt-k": "command:hover",
+  "Alt-b": "command:tree",
+  
+  "Alt-/": "lua:comment.comment",
+  "CtrlUnderscore": "lua:comment.comment",
+  "F2": "PreviousTab",
+  "F3": "NextTab",
+  "CtrlR": "Redo",
+  "CtrlJ": "CommandMode",
+  "CtrlRight": "WordRight",
+  "CtrlLeft": "WordLeft",
+  "CtrlP": "command:set filetype shell"
+}

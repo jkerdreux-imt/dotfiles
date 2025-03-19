@@ -1,0 +1,62 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+0",
+        "command": "workbench.action.joinAllGroups"
+    },
+    {
+        "key": "ctrl+meta+b",
+        "command": "workbench.action.focusActivityBar"
+    },
+    {
+        "key": "ctrl+alt+m",
+        "command": "workbench.action.toggleMenuBar"
+    },
+   {
+        "key": "ctrl+meta+o",
+        "command": "workbench.action.focusNextGroup"
+    },
+    {
+        "key": "ctrl+meta+left",
+        "command": "workbench.action.navigateBack"
+    },
+    {
+        "key": "ctrl+meta+right",
+        "command": "workbench.action.navigateForward"
+    },
+   {
+        "key": "ctrl+meta+f",
+        "command": "editor.toggleFold",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+   {
+        "key": "shift+f9",
+        "command": "-editor.debug.action.toggleInlineBreakpoint",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+f9",
+        "command": "references-view.findReferences",
+        "when": "editorHasReferenceProvider"
+    },
+    {
+        "key": "f9",
+        "command": "-editor.debug.action.toggleBreakpoint",
+        "when": "debuggersAvailable && disassemblyViewFocus || debuggersAvailable && editorTextFocus"
+    },
+    {
+        "key": "f9",
+        "command": "editor.action.goToReferences",
+        "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+    {
+        "key": "ctrl+shift+i",
+        "command": "-codeium.openCodeiumCommand",
+        "when": "codeium.commandEnabled && editorTextFocus && !inlineSuggestionsVisible"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "inlineChat.startWithCurrentLine",
+        "when": "inlineChatHasProvider && !editorReadonly && !inlineChatVisible"
+    }
+]

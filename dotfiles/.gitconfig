@@ -1,0 +1,37 @@
+#[user]
+#	email = jkx@larsen-b.com
+#	name = Jkx
+
+[user]
+	email = jerome.kerdreux@imt-atlantique.fr
+	name = jkerdreux-imt
+	
+[core]
+	quotepath = false
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+
+[alias]
+    nah = "!f(){ git reset --hard; git clean -df; if [ -d ".git/rebase-apply" ] || [ -d ".git/rebase-merge" ]; then git rebase --abort; fi; }; f"
+    uncommit = reset --soft HEAD~1
+    info = remote -v
+    go = "!f() { git commit ${@} && git push; }; f"
+    freeze   = update-index --assume-unchanged
+    unfreeze = update-index --no-assume-unchanged
+    frozen   = !git ls-files -v | grep '^h'

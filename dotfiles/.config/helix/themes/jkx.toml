@@ -1,0 +1,104 @@
+# Author : Jerome Kerdreux <Jerome.Kerdreux@Finix.eu.org>
+
+"attribute" = "jkx-orange"
+"keyword" = "jkx-red"
+# "keyword.directive" = "jkx-yellow"
+"namespace" = "jkx-teal"
+"punctuation" = { fg = "jkx-fg0", modifiers = ["bold"] }
+"punctuation.delimiter" = "jkx-pink"
+"operator" = { fg = "jkx-pink", modifiers = ["bold"] }
+#"special" = "jkx-lgreen"
+"variable.other.member" = "jkx-fg0"
+"variable" = "jkx-fg0"
+"variable.parameter" = "jkx-purp"
+"type" = "jkx-teal"
+"type.builtin" = { fg = "jkx-red", modifiers = ["bold"] }
+"constructor" = "jkx-lblue"
+"function" = "jkx-lblue"
+"function.macro" = { fg = "jkx-orange", modifiers = ["bold"] }
+"function.builtin" = { fg = "jkx-lblue", modifiers = ["bold"] }
+"comment" = "jkx-base5"
+"variable.builtin" = "jkx-fg0"
+"constant" = "jkx-teal"
+"constant.builtin" = "jkx-teal"
+"string" = "jkx-yellow"
+"constant.numeric" = "jkx-blue"
+"constant.character.escape" = { fg = "jkx-lgreen", modifiers = ["bold"] }
+"label" = "jkx-blue"
+"module" = "jkx-red"
+
+"markup.heading" = "jkx-blue"
+"markup.list" = "jkx-red"
+"markup.bold" = { fg = "jkx-yellow", modifiers = ["bold"] }
+"markup.italic" = { fg = "jkx-purp", modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "jkx-yellow", modifiers = ["underlined"] }
+"markup.link.text" = "jkx-red"
+"markup.quote" = "jkx-teal"
+"markup.raw" = "jkx-lgreen"
+
+"diff.plus" = "jkx-teal"
+"diff.delta" = "jkx-orange"
+"diff.minus" = "jkx-lred"
+
+"ui.background" = { bg = "jkx-base1" }
+"ui.linenr" = { fg = "jkx-base5" }
+"ui.linenr.selected" = { fg = "jkx-fg1" }
+"ui.cursorline" = { bg = "jkx-base0" }
+"ui.statusline" = { fg = "jkx-fg1", bg = "jkx-base2" }
+"ui.statusline.inactive" = { fg = "jkx-fg0", bg = "jkx-base2" }
+"ui.popup" = { bg = "jkx-base2" }
+"ui.window" = { bg = "jkx-base2" }
+"ui.help" = { bg = "jkx-base2", fg = "jkx-fg1" }
+
+"ui.statusline.normal" = { fg = "jkx-base1", bg = "jkx-blue", modifiers = [ "bold" ]}
+"ui.statusline.insert" = { fg = "jkx-base1", bg = "jkx-lgreen", modifiers = [ "bold" ]}
+"ui.statusline.select" = { fg = "jkx-base1", bg = "jkx-red", modifiers = [ "bold" ] }
+
+"ui.bufferline" = { fg = "jkx-fg1", bg = "jkx-base2" }
+"ui.bufferline.active" = { fg = "jkx-fg0", bg = "jkx-base3", modifiers = [ "bold" ], underline = { color = "jkx-base5", style = "line" } }
+
+"ui.text" = { fg = "jkx-fg1" }
+"ui.text.focus" = { fg = "jkx-fg1", modifiers= ["bold"] }
+"ui.virtual.whitespace" = "jkx-base5"
+"ui.virtual.ruler" = { bg = "jkx-base0" }
+
+"ui.selection" = { bg = "jkx-base3" }
+"ui.cursor.match" = { fg = "jkx-red"}
+"ui.cursor" = { fg = "jkx-base5", modifiers = ["reversed"] }
+
+"ui.menu" = { fg = "jkx-fg1", bg = "jkx-base2" }
+"ui.menu.selected" = { bg = "jkx-base3" }
+
+"warning" = "jkx-orange"
+"error" = "jkx-lred"
+"info" = "jkx-teal"
+"hint" = "jkx-blue"
+
+# make diagnostic underlined, to distinguish with selection text.
+"diagnostic.warning" = { underline = { color = "jkx-orange", style = "curl"} }
+"diagnostic.error" = { underline = { color = "jkx-lred", style = "curl"} }
+"diagnostic.info" = { underline = { color = "jkx-teal", style = "curl"} }
+"diagnostic.hint" = { underline = { color = "jkx-blue", style = "curl"} }
+
+[palette]
+jkx-yellow = "#f1fa8c"
+jkx-lblue =  "#66d9ef"
+jkx-teal =   "#59dcb7"
+jkx-blue =   "#36b2d4"
+jkx-orange = "#dc7759"
+jkx-red =    "#ff3e85"
+jkx-lgreen = "#7fdc59"
+jkx-lred =   "#dc597f"
+jkx-purp =   "#a984df"
+jkx-pink =   "#f575bf"
+
+jkx-base0 = "#13181e"
+jkx-base1 = "#161c23" # default bg
+jkx-base2 = "#232d38" # ui bg
+jkx-base3 = "#313f4e" 
+jkx-base4 = "#415367" 
+jkx-base5 = "#6272a4" # comment
+
+jkx-fg0 = "#e8e8e2"
+jkx-fg1 = "#dddddd"

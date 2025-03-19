@@ -1,0 +1,82 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 24,
+  "modules-left": [
+    "cpu",
+    "memory",
+    "disk"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "tray",
+    "custom/network",
+    "pulseaudio",
+    "battery",
+    "clock"
+  ],
+  "clock": {
+    "format": "{:%d/%m / %H:%M}",
+    "on-click": "zen-browser https://calendar.google.com/calendar/u/0/r"
+  },
+  "tray": {
+    "spacing": 10
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  "network": {
+    "format-wifi": " {essid}",
+    "format-ethernet": " {ipaddr}",
+    "format-disconnected": " No connection"
+  },
+  "custom/network": {
+    "exec": "~/.config/waybar/network.sh",
+    "interval": 5,
+    "format": "  {}",
+    "return-type": "json"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ],
+    "format-muted": "    ",
+    "on-click": "pavucontrol",
+    "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "cpu": {
+    "format": "  {usage}%",
+    "on-click": "kitty --title popup -e htop"
+  },
+  "memory": {
+    "format": "󰍛 {percentage}%"
+  },
+  "disk": {
+    "format": "󱛟 {percentage_used}%",
+    "on-click": "kitty --title popup -e gdu -d"
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 12,
+    "tooltip-format": "{title}\n{app_id}",
+    "on-click": "activate",
+    "on-click-middle": "close"
+  }
+}

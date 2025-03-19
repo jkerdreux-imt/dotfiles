@@ -1,0 +1,5 @@
+style:
+    selected-row:
+        text-color: black
+        # background-color: "#ff0000"
+        

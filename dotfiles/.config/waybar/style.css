@@ -1,0 +1,86 @@
+/* ~/.config/waybar/style.css */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Fira Code", "FontAwesome", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+    background: transparent; /* Fond transparent pour tous les éléments */
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0); /* Fond complètement transparent */
+    color: #ffffff; /* Couleur du texte */
+    border-bottom: 0; /* Pas de bordure */
+}
+
+/* Style des modules */
+#cpu,
+#memory,
+#disk,
+#custom-network,
+#clock,
+#battery,
+#network,
+#pulseaudio,
+#tray,
+#workspaces {
+    background-color: rgba(30, 30, 30, 0.6); /* Fond semi-transparent pour les modules */
+    padding: 1px 8px;
+    margin: 4px 4px;
+    border-radius: 6px; /* Coins arrondis */
+}
+
+/* Style au survol */
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Style du workspace actif */
+#workspaces button.active {
+    /* Blue */
+    /* background: rgba(122, 162, 247, 0.9); */
+    /* color: #ffffff; */
+    /* Green */
+    background: rgba(158, 206, 106, 0.9);
+    color: #222;
+    border-radius: 4px;
+}
+
+#workspaces button {
+    /* padding: 0 8px; */
+    color: #ccc;
+}
+
+/* Personnalisation des icônes */
+#custom-network {
+    color: #6ff3a6;
+}
+
+#pulseaudio {
+    color: #fad000;
+}
+
+#battery {
+    color: #98c379;
+}
+
+#clock {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+
+/* Correction des menus de la tray (opaque) */
+#tray menu {
+    background-color: #2a2a2a; /* Fond opaque */
+    color: #ffffff; /* Texte */
+    border-radius: 4px;
+    /* padding: 8px; */
+}
+
+
+#tray menu > *:hover {
+    background: rgba(255, 255, 255, 0.1);
+}

@@ -1,0 +1,18 @@
+{
+    "colorscheme": "dracula-jkx",
+    "eofnewline": false,
+    "fastdirty": true,
+    "ignorecase": false,
+    "lsp.autocompleteDetails": true,
+    "lsp.formatOnSave": false,
+    "lsp.ignoreTriggerCharacters": "completion,signature",
+    "lsp.server": "c=clangd go=gopls",
+    "pluginchannels": [
+        "https://raw.githubusercontent.com/micro-editor/plugin-channel/master/channel.json"
+    ],
+    "pluginrepos": [],
+    "savecursor": true,
+    "statusformatl": "$(filename) $(modified)($(line),$(col)) | ft:$(opt:filetype) | $(opt:fileformat) | $(opt:encoding)",
+    "tabstospaces": true,
+    "termtitle": false
+}

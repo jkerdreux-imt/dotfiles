@@ -1,0 +1,8 @@
+(
+    cmdbar_bg: Some("#292e42"),
+    cmdbar_extra_lines_bg: Some("#292e42"),
+    selection_bg: Some("#7aa2f7"),
+    selection_fg: Some("#1a1b26"),
+    selected_tab: Some("#9ece6a"),
+)
+

@@ -1,0 +1,31 @@
+
+# JKX:
+# Impossible de setter TERM, ghossty set to xterm-ghostty
+# impossible de faire un ssh avec ce foutu term
+
+# keys
+keybind = ctrl+shift+i=new_split:right
+keybind = ctrl+shift+o=new_split:down
+# default is tab prev / next
+keybind = ctrl+page_up=unbind
+keybind = ctrl+page_down=unbind
+keybind = ctrl+shift+page_up=next_tab
+keybind = ctrl+shift+page_down=previous_tab
+
+
+# mics
+# theme = tokyonight
+theme = /usr/share/ghostty/themes/tokyonight
+
+
+# no top-bar
+window-decoration = false
+
+# font-family = "VictorMono Nerd Font Mono"
+font-family = "VictorMono NFM SemiBold"
+# font-family = SourceCodeVF
+font-size = 12
+shell-integration = fish
+
+# save-state ne semble pas fonctionner
+# window-save-state = always

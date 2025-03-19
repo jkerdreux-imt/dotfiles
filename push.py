@@ -4,6 +4,7 @@ import tempfile
 
 BLACKLIST = [
     ".ssh/",
+    ".gitconfig",
     ".tmuxp/",
     ".local/bin/chezmoi-commit",
     ".local/bin/chezmoi-clone",

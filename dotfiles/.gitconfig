@@ -1,11 +1,4 @@
-#[user]
-#	email = jkx@larsen-b.com
-#	name = Jkx
 
-[user]
-	email = jerome.kerdreux@imt-atlantique.fr
-	name = jkerdreux-imt
-	
 [core]
 	quotepath = false
 

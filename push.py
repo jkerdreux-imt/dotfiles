@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import subprocess
 import tempfile
@@ -6,6 +8,8 @@ BLACKLIST = [
     ".ssh/",
     ".gitconfig",
     ".tmuxp/",
+    ".config/broot",
+    ".config/yazi",
     ".local/bin/chezmoi-commit",
     ".local/bin/chezmoi-clone",
     ".local/bin/chezmoi-token",
@@ -20,9 +24,7 @@ def clone():
     tmp_dir = tempfile.mkdtemp()
     tmp_dir = os.path.join(tmp_dir, "")
     cmd = 'chezmoi archive|tar xvfz - -C "%s" ' % tmp_dir
-    subprocess.run(
-        cmd, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
-    )
+    subprocess.run(cmd, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     return tmp_dir
 
 

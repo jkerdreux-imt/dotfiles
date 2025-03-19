@@ -24,7 +24,7 @@
     nah = "!f(){ git reset --hard; git clean -df; if [ -d ".git/rebase-apply" ] || [ -d ".git/rebase-merge" ]; then git rebase --abort; fi; }; f"
     uncommit = reset --soft HEAD~1
     info = remote -v
-    go = "!f() { git commit ${@} && git push; }; f"
+    go = "!f() { git commit -v ${@} && git push; }; f"
     freeze   = update-index --assume-unchanged
     unfreeze = update-index --no-assume-unchanged
     frozen   = !git ls-files -v | grep '^h'

@@ -19,14 +19,14 @@ I'm currently using
 
 You can find below some screenshots
 
-Desktop
+### Desktop
  ![Desktop](./shots/desk.png)
 
-Rofi
+### Rofi
  ![Rofi](./shots/rofi.png)
 
-Tmux
+### Tmux
  ![Tmux](./shots/tmux.png)
 
-Zellij
+### Zellij + Helix Editor
  ![Zellij](./shots/helix-zellij.png)

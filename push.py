@@ -24,7 +24,9 @@ def clone():
     tmp_dir = tempfile.mkdtemp()
     tmp_dir = os.path.join(tmp_dir, "")
     cmd = 'chezmoi archive|tar xvfz - -C "%s" ' % tmp_dir
-    subprocess.run(cmd, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(
+        cmd, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+    )
     return tmp_dir
 
 
@@ -70,9 +72,29 @@ def build(tmp_dir, targets):
             os.system(f'cp "{src}" "{dest}"')
 
 
-tmp_dir = clone()
-targets = compare(tmp_dir)
-# pprint(targets)
+def check(targets):
+    for root, sub, files in os.walk(DEST):
+        root = root.replace(DEST, "")
+        root = root[1:] if root.startswith("/") else root
+        for s in sub:
+            target = os.path.join(root, s, "")
+            if target not in targets and not black_listed(target):
+                print(f"{target} Not found")
 
+        for f in files:
+            target = os.path.join(root, f)
+            if target not in targets and not black_listed(target):
+                print(f"{target} Not found")
+
+
+# Clone chezmoi config in a tmp folder
+tmp_dir = clone()
+# List all files and directories in the tmp folder that are not blacklisted
+targets = compare(tmp_dir)
+# Populate the DEST folder with the files and directories
 build(tmp_dir, targets)
+# Ditch files and directories that are not in the tmp folder
+check(targets)
+
+# Remove the tmp folder
 cleanup(tmp_dir)

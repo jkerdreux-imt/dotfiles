@@ -18,7 +18,7 @@
     "clock"
   ],
   "clock": {
-    "format": "{:%d/%m / %H:%M}",
+    "format": " {:%d/%m / %H:%M}",
     "on-click": "zen-browser https://calendar.google.com/calendar/u/0/r"
   },
   "tray": {

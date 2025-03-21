@@ -4,7 +4,7 @@ This repo contains my configuration files. The main goal is to share my
 configuration with others.
 
 This repo is an automatic extract from my [chezmoi](https://www.chezmoi.io/)
-repo (private). You can check out `push.py` to figure out how I do this.
+repo (private). You can check out `archive.py` to figure out how I do this.
 
 My main shell for years is [Fish](https://fishshell.com/). I don't use extra
 plugins for the look and feel. The prompt is made by myself that's all. I mainly

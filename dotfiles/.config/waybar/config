@@ -19,7 +19,7 @@
   ],
   "clock": {
     "format": " {:%d/%m / %H:%M}",
-    "on-click": "zen-browser https://calendar.google.com/calendar/u/0/r"
+    "on-click": "zen-browser https://calendar.google.com/calendar/u/0/r && hyprctl dispatch workspace 1"
   },
   "tray": {
     "spacing": 10

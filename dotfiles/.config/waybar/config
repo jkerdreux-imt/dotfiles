@@ -5,7 +5,8 @@
   "modules-left": [
     "cpu",
     "memory",
-    "disk"
+    "disk",
+    "custom/test"
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -36,8 +37,13 @@
   },
   "custom/network": {
     "exec": "~/.config/waybar/network.sh",
-    "interval": 5,
+    "interval": 10,
     "format": "  {}",
+    "return-type": "json"
+  },
+  "custom/test": {
+    "exec": "~/.config/waybar/test.py",
+    "format": "󰙨 {}",
     "return-type": "json"
   },
   "pulseaudio": {

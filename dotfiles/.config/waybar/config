@@ -6,7 +6,7 @@
     "cpu",
     "memory",
     "disk",
-    "custom/test"
+    "custom/devices"
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -41,9 +41,9 @@
     "format": "  {}",
     "return-type": "json"
   },
-  "custom/test": {
-    "exec": "~/.config/waybar/test.py",
-    "format": "󰙨 {}",
+  "custom/devices": {
+    "exec": "~/.config/waybar/devices_counter",
+    "format": "{}",
     "return-type": "json"
   },
   "pulseaudio": {
@@ -54,7 +54,7 @@
       ""
     ],
     "format-muted": "    ",
-    "on-click": "pavucontrol",
+    "on-click": "pavucontrol -t 3",
     "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   },
   "battery": {

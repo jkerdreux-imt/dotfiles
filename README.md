@@ -16,10 +16,10 @@ I use `git sparse-ckout` to checkout only the needed files with `chezmoi`.
 Most config files try to load a local config, for device specific configuration.
 Fish prompt color can be different from one host to another, so  Fish load
 `local.fish` file if present that override the default configuration.
+Same for Hyprland or Kitty.
 
-The repos also contains special configs for every day use. `git` or `ssh` which
+The repos also contains special configs for every day use. `git` or `ssh` with
 additional support.
-
 
 
 ## Porn

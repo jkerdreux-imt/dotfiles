@@ -20,6 +20,7 @@ window#waybar {
 #memory,
 #disk,
 #custom-network,
+#custom-devices,
 #clock,
 #battery,
 #network,

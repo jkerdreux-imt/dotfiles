@@ -5,7 +5,8 @@
   "modules-left": [
     "cpu",
     "memory",
-    "disk"
+    "disk",
+    "custom/devices"
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -36,8 +37,13 @@
   },
   "custom/network": {
     "exec": "~/.config/waybar/network.sh",
-    "interval": 5,
+    "interval": 10,
     "format": "  {}",
+    "return-type": "json"
+  },
+  "custom/devices": {
+    "exec": "~/.config/waybar/devices_counter",
+    "format": "{}",
     "return-type": "json"
   },
   "pulseaudio": {
@@ -48,7 +54,7 @@
       ""
     ],
     "format-muted": "    ",
-    "on-click": "pavucontrol",
+    "on-click": "pavucontrol -t 3",
     "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   },
   "battery": {

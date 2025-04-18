@@ -1,6 +1,5 @@
 [global_config]
   focus = mouse
-  suppress_multiple_term_dialog = True
 [keybindings]
   go_up = <Super>Up
   go_down = <Super>Down
@@ -22,7 +21,7 @@
     background_darkness = 0.97
     cursor_fg_color = "#2ec27e"
     cursor_bg_color = "#deddda"
-    font = Terminess Nerd Font Mono Medium 13
+    font = IosevkaTerm Nerd Font Mono 13
     foreground_color = "#deddda"
     show_titlebar = False
     scrollbar_position = hidden
@@ -31,17 +30,17 @@
     use_system_font = False
   [[Tokyo Night Storm]]
     visible_bell = True
+    background_color = "#24283b"
     background_darkness = 0.97
     cursor_fg_color = "#2ec27e"
     cursor_bg_color = "#deddda"
     font = Terminess Nerd Font Mono Medium 13
+    foreground_color = "#c0caf5"
     show_titlebar = False
     scrollbar_position = hidden
     scrollback_lines = 1000
-    use_system_font = False
-    background_color = "#24283b"
-    foreground_color = "#c0caf5"
     palette = "#1d202f:#f7768e:#9ece6a:#e0af68:#7aa2f7:#bb9af7:#7dcfff:#a9b1d6:#414868:#f7768e:#9ece6a:#e0af68:#7aa2f7:#bb9af7:#7dcfff:#9d7cd8"
+    use_system_font = False
 [layouts]
   [[default]]
     [[[child1]]]

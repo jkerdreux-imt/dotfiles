@@ -27,7 +27,7 @@ select = "underline"
 hidden = true
 
 [editor.indent-guides]
-render = false
+render = true
 
 [editor.statusline]
 left = ["mode", "spinner", "version-control", "file-name", "read-only-indicator"]
@@ -57,7 +57,9 @@ F2 = "rename_symbol"
 F5 = "workspace_diagnostics_picker"
 F9 = "goto_reference"
 F10 = "symbol_picker"
+F11 = "jump_backward"
 F12 = "goto_definition"
+
 # navigation
 C-down = "goto_next_paragraph"
 C-up = "goto_prev_paragraph"
@@ -81,9 +83,13 @@ C-q = ":q!"
 C-v = "paste_before"
 C-c = "toggle_comments"
 # LSP
+F1 = "hover"
+F2 = "rename_symbol"
 F9 = "goto_reference"
 F10 = "symbol_picker"
+F11 = "jump_backward"
 F12 = "goto_definition"
+
 # navigation
 C-right = "move_next_long_word_start"
 C-left = "move_prev_long_word_end"

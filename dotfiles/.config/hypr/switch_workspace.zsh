@@ -19,9 +19,9 @@ switch_workspace () {
   current_workspace_id=$(hyprctl activeworkspace -j | jq -r '.id')
 
   # Get the list of all workspaces and count them
-  workspaces=$(hyprctl workspaces -j)
-  total_workspaces=$(echo "$workspaces" | jq 'length')
+  total_workspaces=$(hyprctl workspaces -j| jq 'length')
 
+  echo "Switch to $directiion from $current_workspace_id / $total_workspaces"
   # Calculate the ID of the target workspace
   local target_workspace_id
   if [[ "$direction" == "next" ]]; then

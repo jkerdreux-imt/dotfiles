@@ -52,6 +52,7 @@ alias htelnet "rlwrap nc "
 
 # tools 
 alias météo "curl http://v2.wttr.in/Brest,France"
+alias arch-updated "grep -iE 'installed|upgraded' /var/log/pacman.log"
 
 if type -q bat
     alias less bat

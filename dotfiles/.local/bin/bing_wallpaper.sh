@@ -11,6 +11,8 @@ BING_URL="https://www.bing.com$(echo "$BING_JSON" | jq -r '.images[0].url' | sed
 # Nom du fichier basé sur la date
 FILENAME="$WALLPAPER_DIR/bing_$(date +%Y-%m-%d).jpg"
 
+echo "New wallpaper: $FILENAME"
+
 # Télécharger l'image si elle n'existe pas encore
 if [ ! -f "$FILENAME" ]; then
     curl -s -o "$FILENAME" "$BING_URL"

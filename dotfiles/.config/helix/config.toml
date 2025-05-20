@@ -27,7 +27,7 @@ select = "underline"
 hidden = true
 
 [editor.indent-guides]
-render = true
+render = false
 
 [editor.statusline]
 left = ["mode", "spinner", "version-control", "file-name", "read-only-indicator"]

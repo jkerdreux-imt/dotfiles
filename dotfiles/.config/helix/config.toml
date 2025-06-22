@@ -1,6 +1,6 @@
 #theme = "bogster"
-theme = "jkx_tokyo"
-# theme = "tokyonight_moon"
+# theme = "jkx_tokyo"
+theme = "tokyonight_moon"
 
 [editor]
 color-modes = true

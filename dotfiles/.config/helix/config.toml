@@ -1,6 +1,7 @@
-#theme = "bogster"
+# theme = "bogster"
 # theme = "jkx_tokyo"
-theme = "tokyonight_moon"
+# theme = "tokyonight_moon"
+theme = "boo_berry"
 
 [editor]
 color-modes = true
@@ -50,15 +51,23 @@ C-t = ":toggle-option lsp.display-inlay-hints"
 C-x = ":buffer-close"
 C-b = "buffer_picker"
 C-p = "file_picker"
-C-r = ":rla"
+# C-r = ":rla"
+
 # LSP
-F1 = "hover"
-F2 = "rename_symbol"
-F5 = "workspace_diagnostics_picker"
-F9 = "goto_reference"
-F10 = "symbol_picker"
-F11 = "jump_backward"
-F12 = "goto_definition"
+# F1 = "hover"
+# F2 = "rename_symbol"
+# F5 = "workspace_diagnostics_picker"
+# F9 = "goto_reference"
+# F10 = "symbol_picker"
+# F11 = "jump_backward"
+# F12 = "goto_definition"
+
+C-h = "hover"
+C-r = "rename_symbol"
+C-m = "workspace_diagnostics_picker"
+C-u = "goto_reference"
+C-l = "symbol_picker"
+C-y = "goto_definition"
 
 # navigation
 C-down = "goto_next_paragraph"
@@ -67,18 +76,20 @@ C-right = "move_next_long_word_start"
 C-left = "move_prev_long_word_end"
 C-a ="goto_line_start"
 C-e ="goto_line_end"
+C-j = "half_page_down"
+C-k = "half_page_up"
 
 # windows
 C-pagedown = ":buffer-next"
 C-pageup = ":buffer-previous"
 "C-/" = ":run-shell-command zellij run -fc -x 1% -y 60% --width 98% --height 40% -- fish"
 # selection 
-"C-]" = "expand_selection"  # original alt-o / alt-i => collide w/ zellij
-"C-[" = "shrink_selection"
+"C-." = "expand_selection"  # original alt-o / alt-i => collide w/ zellij
+"C-," = "shrink_selection"
 "*" = ["move_char_right", "move_prev_word_start", "move_next_word_start", "search_selection"]
 # Lazygit
-# C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla", ":redraw",":toggle-option mouse",":toggle-option mouse"]
-C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla"]
+C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla", ":redraw",":toggle-option mouse",":toggle-option mouse"]
+# C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla"]
 
 [keys.insert]
 C-s = ":w"
@@ -86,12 +97,19 @@ C-q = ":q!"
 C-v = "paste_before"
 C-c = "toggle_comments"
 # LSP
-F1 = "hover"
-F2 = "rename_symbol"
-F9 = "goto_reference"
-F10 = "symbol_picker"
-F11 = "jump_backward"
-F12 = "goto_definition"
+# F1 = "hover"
+# F2 = "rename_symbol"
+# F9 = "goto_reference"
+# F10 = "symbol_picker"
+# F11 = "jump_backward"
+# F12 = "goto_definition"
+
+C-h = "hover"
+C-r = "rename_symbol"
+C-m = "workspace_diagnostics_picker"
+C-u = "goto_reference"
+C-l = "symbol_picker"
+C-y = "goto_definition"
 
 # navigation
 C-right = "move_next_long_word_start"

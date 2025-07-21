@@ -391,7 +391,7 @@ end
 
 function fish_config_update
     set -l tmp_file /tmp/config.fish
-    curl -sfL "https://seafile.enstb.org/f/5f48f64c2fe74f338cf0/?dl=1" >$tmp_file
+    curl -sfL "https://seafile.enstb.org/f/cc10c6fc2ad746e9bfe6/?dl=1" >$tmp_file
     if test -e $tmp_file
         cp $tmp_file ~/.config/fish/config.fish
         rm $tmp_file

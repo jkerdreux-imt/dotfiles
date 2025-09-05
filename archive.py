@@ -10,7 +10,7 @@ BLACKLIST = [
     ".tmuxp/",
     ".config/broot",
     ".config/yazi",
-    ".config/neomutt/",
+    ".neomutt/",
     ".local/bin/chezmoi-commit",
     ".local/bin/chezmoi-clone",
     ".local/bin/chezmoi-token",

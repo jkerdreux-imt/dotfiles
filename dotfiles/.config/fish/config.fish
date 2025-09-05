@@ -10,14 +10,6 @@ set -gx SUDO_PROMPT '[sudo] %p 🗝 : '
 set -gx CHEZMOI "$HOME"/.local/share/chezmoi
 set -gx BAT_THEME base16-256
 
-# less for man page
-set -xU LESS_TERMCAP_md (printf "\e[01;31m")
-set -xU LESS_TERMCAP_me (printf "\e[0m")
-set -xU LESS_TERMCAP_se (printf "\e[0m")
-set -xU LESS_TERMCAP_so (printf "\e[01;44;33m")
-set -xU LESS_TERMCAP_ue (printf "\e[0m")
-set -xU LESS_TERMCAP_us (printf "\e[01;32m")
-
 #-----------------------------------------------------------------------------
 # Aliases
 #-----------------------------------------------------------------------------
@@ -54,6 +46,8 @@ alias htelnet "rlwrap nc "
 alias météo "curl http://v2.wttr.in/Brest,France"
 alias arch-updated "grep -iE 'installed|upgraded' /var/log/pacman.log"
 alias docker-prune "docker system prune --volumes -af && docker buildx prune"
+alias kc "clone-in-kitty --type=os-window"
+alias kssh "kitten ssh"
 
 if type -q bat
     alias less bat

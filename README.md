@@ -14,16 +14,15 @@ config on all my devices (servers etc), so I don't want to install extra stuffs.
 I use `git sparse-ckout` to checkout only the needed files with `chezmoi`.
 
 Most config files try to load a local config, for device specific configuration.
-Fish prompt color can be different from one host to another, so  Fish load
+Fish prompt color can be different from one host to another, so Fish load
 `local.fish` file if present that override the default configuration.
 Same for Hyprland or Kitty.
 
 The repos also contains special configs for every day use. `git` or `ssh` with
 additional support.
 
+I'm currently using:
 
-## Porn
-I'm currently using
 - [Hyprland](https://hyprland.org/)
 - [Waybar](https://github.com/Alexays/Waybar)
 - [Rofi](https://github.com/lbonn/rofi)
@@ -31,16 +30,28 @@ I'm currently using
 - [Zellij](https://zellij.dev/)
 - [Helix Editor](https://helix-editor.com/)
 
+For fish, I only install this packages:
+
+- patrickf1/fzf.fish
+- edc/bass
+- danhper/fish-ssh-agent
+
+## Porn
+
 You can find below some screenshots
 
 ### Desktop
- ![Desktop](./shots/desk.png)
+
+![Desktop](./shots/desk.png)
 
 ### Rofi
- ![Rofi](./shots/rofi.png)
+
+![Rofi](./shots/rofi.png)
 
 ### Tmux
- ![Tmux](./shots/tmux.png)
+
+![Tmux](./shots/tmux.png)
 
 ### Zellij + Helix Editor
- ![Zellij](./shots/helix-zellij.png)
+
+![Zellij](./shots/helix-zellij.png)

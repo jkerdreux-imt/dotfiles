@@ -30,7 +30,7 @@ I'm currently using:
 - [Zellij](https://zellij.dev/)
 - [Helix Editor](https://helix-editor.com/)
 
-For fish, I only install this packages:
+For fish, I only install this packages with [Fisher](https://github.com/jorgebucaran/fisher):
 
 - [patrickf1/fzf.fish](https://github.com/PatrickF1/fzf.fish)
 - [edc/bass](https://github.com/edc/bass)

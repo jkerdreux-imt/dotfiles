@@ -32,9 +32,9 @@ I'm currently using:
 
 For fish, I only install this packages:
 
-- patrickf1/fzf.fish
-- edc/bass
-- danhper/fish-ssh-agent
+- [patrickf1/fzf.fish](https://github.com/PatrickF1/fzf.fish)
+- [edc/bass](https://github.com/edc/bass)
+- [danhper/fish-ssh-agent](https://github.com/danhper/fish-ssh-agent)
 
 ## Porn
 

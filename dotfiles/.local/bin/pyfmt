@@ -1,0 +1,25 @@
+#!/bin/sh
+tmpfile=$(mktemp --suffix .py)
+
+# Automatically clean up the temp file on exit
+trap 'rm -f "$tmpfile"' EXIT
+
+# Check if black is installed
+if ! command -v black >/dev/null 2>&1; then
+    echo "Error: black is not installed or not found in PATH." >&2
+    exit 1
+fi
+
+# Write stdin into the temporary file
+cat > "$tmpfile"
+
+# Check if the black config file exists
+config="$HOME/.config/black/pyproject.toml"
+if [ -f "$config" ]; then
+    black --quiet --config "$config" "$tmpfile"
+else
+    black --quiet "$tmpfile"
+fi
+
+# Print the result
+cat "$tmpfile"

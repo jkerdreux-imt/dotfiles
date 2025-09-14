@@ -497,6 +497,8 @@ end
 # ctrl+up/down to avoid zellij issues
 bind \e\[1\;5A history-token-search-backward
 bind \e\[1\;5B history-token-search-forward
+# ctrl/alt/k = kitty clone
+bind \e\cK kc
 
 #-----------------------------------------------------------------------------
 # Load local files

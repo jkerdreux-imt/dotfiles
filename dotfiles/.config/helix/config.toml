@@ -1,7 +1,7 @@
 # theme = "bogster"
-# theme = "jkx_tokyo"
+theme = "jkx_tokyo"
 # theme = "tokyonight_moon"
-theme = "boo_berry"
+# theme = "boo_berry"
 
 [editor]
 color-modes = true
@@ -43,6 +43,7 @@ display-inlay-hints = false # disable by default but can be enable w/ c-t
 
 
 [keys.normal]
+C-n = ":rla"
 C-s = ":w"
 C-q = ":q!"
 C-v = "paste_before"

@@ -4,7 +4,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" colorscheme industry
+colorscheme retrobox
 
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete

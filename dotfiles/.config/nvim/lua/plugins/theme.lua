@@ -32,10 +32,11 @@ return {
         "LazyVim/LazyVim",
         opts = {
             -- colorscheme = "catppuccin-mocha",
-            colorscheme = "tokyonight-night",
+            -- colorscheme = "tokyonight-night",
             -- colorscheme = "rose-pine",
             -- colorscheme = "dracula",
             -- colorscheme = "sonokai",
+            colorscheme = "duskfox",
         },
     },
 }

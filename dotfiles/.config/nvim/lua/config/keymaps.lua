@@ -8,12 +8,12 @@
 vim.keymap.set("n", "<F1>", function()
     vim.lsp.buf.hover()
 end, { desc = "Show function signature" })
-vim.keymap.set("n", "<F2>", "<Leader>cr", { remap = true, desc = "Rename symbol" })
+vim.keymap.set("n", "<C-r>", "<Leader>cr", { remap = true, desc = "Rename symbol" })
 -- vim.keymap.set("n", "<F1>", "<Leader>cr", { silent = true })
-vim.keymap.set("n", "<F5>", ":FzfLua lsp_workspace_diagnostics<cr>", { silent = true })
-vim.keymap.set("n", "<F9>", ":FzfLua lsp_references<cr>", { silent = true })
-vim.keymap.set("n", "<F10>", ":FzfLua lsp_document_symbols<cr>", { silent = true })
-vim.keymap.set("n", "<F12>", ":FzfLua lsp_definitions<cr>", { silent = true })
+vim.keymap.set("n", "<C-m>", ":FzfLua lsp_workspace_diagnostics<cr>", { silent = true })
+vim.keymap.set("n", "<C-u>", ":FzfLua lsp_references<cr>", { silent = true })
+vim.keymap.set("n", "<C-l>", ":FzfLua lsp_document_symbols<cr>", { silent = true })
+vim.keymap.set("n", "<C-y>", ":FzfLua lsp_definitions<cr>", { silent = true })
 
 -- C-q override the default keymap (block selection)
 vim.keymap.set("n", "<C-q>", "<Cmd>:q<cr>", { silent = true })
@@ -29,9 +29,15 @@ vim.keymap.set("n", "<C-Left>", "B", { silent = true })
 vim.keymap.set("n", "<C-PageUp>", ":bprev<cr>", { silent = true })
 vim.keymap.set("n", "<C-PageDown>", ":bnext<cr>", { silent = true })
 
+-- C-k => delete to the end of line
+vim.keymap.set("n", "<C-k>", "d$", { noremap = true, silent = true })
+
+-- C-h => show hover
+vim.keymap.set("n","<C-h>",":lua vim.lsp.buf.hover()<cr>", { noremap = true, silent = true })
+
 -- C-d => comment line
-vim.api.nvim_set_keymap("n", "<C-d>", "gcc", { silent = true })
-vim.api.nvim_set_keymap("v", "<C-d>", "gc", { silent = true })
+vim.api.nvim_set_keymap("n", "<C-c>", "gcc", { silent = true })
+vim.api.nvim_set_keymap("v", "<C-c>", "gc", { silent = true })
 
 -- C-f override the default keymap => fold-unfold
 vim.keymap.set("n", "<C-f>", "za", { noremap = true, silent = true })

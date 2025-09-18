@@ -11,7 +11,13 @@ function dtest -d "Runs a Docker container with a random name, and delete it at 
     set -l name "$rand_name"
 
     echo "Running Docker container: $name from image: $img_name"
-    docker run -it --rm --add-host host.docker.internal:host-gateway --name "$name" --hostname "$name" "$img_name"
+    docker run -it --rm \
+        --add-host host.docker.internal:host-gateway \
+        --name "$name" \
+        --hostname "$name" \
+        -v (pwd)/mnt/:/root/mnt \
+        -w /root/mnt \
+        "$img_name"
 end
 
 function drun -d "Runs a Docker container with a random name."

@@ -83,14 +83,17 @@ C-k = "half_page_up"
 # windows
 C-pagedown = ":buffer-next"
 C-pageup = ":buffer-previous"
-"C-/" = ":run-shell-command zellij run -fc -x 1% -y 60% --width 98% --height 40% -- fish"
+"C-/" = ":run-shell-command zellij run -fc -x 1%% -y 60%% --width 98%% --height 40%% -- fish"
 # selection 
 "C-." = "expand_selection"  # original alt-o / alt-i => collide w/ zellij
 "C-," = "shrink_selection"
 "*" = ["move_char_right", "move_prev_word_start", "move_next_word_start", "search_selection"]
 # Lazygit
-C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla", ":redraw",":toggle-option mouse",":toggle-option mouse"]
+# C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla", ":redraw",":toggle-option mouse",":toggle-option mouse"]
 # C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla"]
+# Reload doesn't work after zellij 
+"C-g" = [":run-shell-command zellij run -fc -x 2%% -y 2%% --width 96%% --height 96%% -- lazygit"]
+
 
 [keys.insert]
 C-s = ":w"

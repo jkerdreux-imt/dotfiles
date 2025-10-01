@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if ! command -v fzf &> /dev/null
+then
+    echo "Error: 'fzf' is not installed. Please install it to use this script."
+    exit 1
+fi
+
+FILES_TO_READD=$(chezmoi status | grep -v '^\s\s' | awk '{print $NF}' | fzf --multi --bind 'ctrl-a:select-all' --prompt="Chezmoi re-add > ")
+
+if [ -n "$FILES_TO_READD" ]; then
+    echo "Files selected for re-add:"
+    echo "$FILES_TO_READD"
+    echo "$FILES_TO_READD" | xargs -r chezmoi re-add
+    
+    # Confirmation message
+    if [ $? -eq 0 ]; then
+        echo ""
+        echo "✅ 'chezmoi re-add' completed successfully."
+    else
+        echo ""
+        echo "❌ An error occurred during 'chezmoi re-add'."
+    fi
+else
+    echo "No files selected. Operation cancelled."
+fi

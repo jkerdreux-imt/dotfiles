@@ -54,7 +54,7 @@
       ""
     ],
     "format-muted": "    ",
-    "on-click": "pavucontrol -t 3",
+    "on-click": "pavucontrol-qt -t 3",
     "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   },
   "battery": {

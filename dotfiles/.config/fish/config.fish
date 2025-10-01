@@ -481,6 +481,7 @@ end
 alias vv venv
 alias vd venv_exit
 
+# TODO: remove this
 function lazy_install --description "Install LazyVim"
     set -l __conf_dir ~/.config/nvim
     if not test -e $__conf_dir

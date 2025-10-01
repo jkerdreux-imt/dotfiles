@@ -15,8 +15,7 @@ function dtest -d "Runs a Docker container with a random name, and delete it at 
         --add-host host.docker.internal:host-gateway \
         --name "$name" \
         --hostname "$name" \
-        -v (pwd)/mnt/:/root/mnt \
-        -w /root/mnt \
+        -v (pwd)/mnt/:/mnt \
         "$img_name"
 end
 

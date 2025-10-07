@@ -18,7 +18,7 @@ FILES_TO_READD=$(
 if [ -n "$FILES_TO_READD" ]; then
     echo "Files selected for re-add:"
     echo "$FILES_TO_READD"
-    echo "$FILES_TO_READD" | xargs -r chezmoi re-add
+        echo "$FILES_TO_READD" | xargs -r -I {} chezmoi re-add "$HOME/{}"
     
     if [ $? -eq 0 ]; then
         echo ""

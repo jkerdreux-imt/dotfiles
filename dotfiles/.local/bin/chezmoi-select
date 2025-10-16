@@ -6,14 +6,20 @@ then
     exit 1
 fi
 
-FILES_TO_READD=$(chezmoi status | grep -v '^\s\s' | awk '{print $NF}' | fzf --multi --bind 'ctrl-a:select-all' --prompt="Chezmoi re-add > ")
+FILES_TO_READD=$(
+    chezmoi status |
+    awk '{print $2}' |
+    fzf --multi \
+        --bind 'ctrl-a:select-all' \
+        --prompt="Chezmoi re-add > " \
+        --preview 'chezmoi diff --color true  -- ~/{}'
+)
 
 if [ -n "$FILES_TO_READD" ]; then
     echo "Files selected for re-add:"
     echo "$FILES_TO_READD"
-    echo "$FILES_TO_READD" | xargs -r chezmoi re-add
+        echo "$FILES_TO_READD" | xargs -r -I {} chezmoi re-add "$HOME/{}"
     
-    # Confirmation message
     if [ $? -eq 0 ]; then
         echo ""
         echo "✅ 'chezmoi re-add' completed successfully."

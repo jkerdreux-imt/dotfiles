@@ -1,9 +1,9 @@
 #-----------------------------------------------------------------------------
 # Environnement
 #-----------------------------------------------------------------------------
-set -gx PATH "$PATH" ~/.local/bin/
+set -gx PATH ~/.local/bin/ "$PATH"
+set -gx PATH ~/go/bin/ "$PATH"
 set -gx PATH "$PATH" ~/Utils/tools/
-set -gx PATH "$PATH" ~/go/bin/
 # set -gx PYTHONSTARTUP ~/.pythonstart
 set -gx GCC_COLORS 'error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 set -gx fish_greeting ''
@@ -220,8 +220,8 @@ set -g __fish_prompt_color_host_fg eee
 set -g fish_prompt_pwd_dir_length 8
 set -g __fish_git_prompt_showcolorhints 0
 set -g __fish_git_prompt_showdirtystate 1
-# set -g __fish_git_prompt_show_informative_status 1
-# set -g __fish_git_prompt_showupstream verbose
+set -g __fish_git_prompt_show_informative_status 1
+set -g __fish_git_prompt_showupstream informative
 
 #-----------------------------------------------------------------------------
 # functions 

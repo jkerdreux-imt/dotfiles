@@ -77,8 +77,8 @@ C-right = "move_next_long_word_start"
 C-left = "move_prev_long_word_end"
 C-a ="goto_line_start"
 C-e ="goto_line_end"
-C-j = "half_page_down"
-C-k = "half_page_up"
+C-k = "half_page_down"
+C-i = "half_page_up"
 
 # windows
 C-pagedown = ":buffer-next"
@@ -88,6 +88,7 @@ C-pageup = ":buffer-previous"
 "C-." = "expand_selection"  # original alt-o / alt-i => collide w/ zellij
 "C-," = "shrink_selection"
 "*" = ["move_char_right", "move_prev_word_start", "move_next_word_start", "search_selection"]
+
 # Lazygit
 # C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla", ":redraw",":toggle-option mouse",":toggle-option mouse"]
 # C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla"]
@@ -125,8 +126,6 @@ C-e ="goto_line_end"
 C-pagedown = ":buffer-next"
 C-pageup = ":buffer-previous"
 C-space = "completion"
-
-"C-/" = ":run-shell-command zellij run -fc -x 1% -y 60% --width 98% --height 40% -- fish"
 
 # create a new minor mode bound to 'r'
 # [keys.normal."r"]

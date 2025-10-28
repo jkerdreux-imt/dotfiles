@@ -1,0 +1,36 @@
+#!/bin/bash
+
+if ! command -v fzf &> /dev/null
+then
+    echo "Error: 'fzf' is not installed. Please install it to use this script."
+    exit 1
+fi
+
+FILES_TO_COMMIT=$(
+    git status --porcelain |
+    sed 's/^...//g' |
+    fzf --multi \
+        --bind 'ctrl-a:select-all' \
+        --prompt="Git commit > " \
+        --preview 'git diff --color=always -- $(git rev-parse --show-toplevel)/{}' |
+    sed "s|^|$(git rev-parse --show-toplevel)/|"
+)
+
+if [ -n "$FILES_TO_COMMIT" ]; then
+    echo "Files selected:"
+    echo "$FILES_TO_COMMIT"
+
+    # Ajoute les fichiers choisis
+    echo "$FILES_TO_COMMIT" | xargs -r git add
+
+    # Lance le commit
+    if git commit -v; then
+        echo "✅ Commit done."
+    else
+        echo "❌ Commit failed or aborted. Rolling back staged changes..."
+        # Annule le staging uniquement pour les fichiers sélectionnés
+        echo "$FILES_TO_COMMIT" | xargs -r git reset
+    fi
+else
+    echo "No files selected. Operation cancelled."
+fi

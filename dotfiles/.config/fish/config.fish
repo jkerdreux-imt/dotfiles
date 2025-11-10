@@ -502,6 +502,10 @@ bind \e\[1\;5B history-token-search-forward
 # ctrl/alt/k = kitty clone
 bind \e\cK kc
 
+if type -q fzf_configure_bindings
+    fzf_configure_bindings --git_log=\e\cd
+end
+
 #-----------------------------------------------------------------------------
 # Load local files
 #-----------------------------------------------------------------------------

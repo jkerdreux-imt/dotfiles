@@ -12,7 +12,7 @@ true-color = true
 # rulers=[100]
 end-of-line-diagnostics = "disable"
 # gutters = ["diagnostics", "spacer", "line-numbers", "spacer", "diff"]
-gutters = ["diff", "diagnostics","spacer"]
+gutters = ["spacer","diff", "diagnostics","spacer"]
 completion-replace = true
 
 [editor.inline-diagnostics]
@@ -83,7 +83,8 @@ C-i = "half_page_up"
 # windows
 C-pagedown = ":buffer-next"
 C-pageup = ":buffer-previous"
-"C-/" = ":run-shell-command zellij run -fc -x 1%% -y 60%% --width 98%% --height 40%% -- fish"
+# "C-/" = ":run-shell-command zellij run -fc -x 1%% -y 60%% --width 98%% --height 40%% -- fish"
+"C-/" = ":sh kitty @ launch --cwd=current --no-response  --type=overlay-main"
 # selection 
 "C-." = "expand_selection"  # original alt-o / alt-i => collide w/ zellij
 "C-," = "shrink_selection"
@@ -93,8 +94,8 @@ C-pageup = ":buffer-previous"
 # C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla", ":redraw",":toggle-option mouse",":toggle-option mouse"]
 # C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla"]
 # Reload doesn't work after zellij 
-"C-g" = [":run-shell-command zellij run -fc -x 2%% -y 2%% --width 96%% --height 96%% -- lazygit"]
-
+# C-g" = [":run-shell-command zellij run -fc -x 2%% -y 2%% --width 96%% --height 96%% -- lazygit"]
+C-g = [":sh kitty @ launch --cwd=current --no-response  --type=overlay-main lazygit",":rla",":redraw"]
 
 [keys.insert]
 C-s = ":w"
@@ -128,7 +129,8 @@ C-pageup = ":buffer-previous"
 C-space = "completion"
 
 # create a new minor mode bound to 'r'
-# [keys.normal."r"]
+[keys.normal."r"]
+s = ":sh kitty @ launch --cwd=current  --type=overlay-main --no-response"
 # g = ":run-shell-command zellij run -fc -x 5% -y 5% --width 90% --height 90% -- lazygit"
 
 

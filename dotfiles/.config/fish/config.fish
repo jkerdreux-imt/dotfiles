@@ -49,7 +49,7 @@ alias arch-updated "grep -iE 'installed|upgraded' /var/log/pacman.log"
 alias docker-prune "docker system prune --volumes -af && docker buildx prune"
 alias kc "clone-in-kitty --type=os-window"
 
-if type -q kitty
+if set -q KITTY_WINDOW_ID; and set -q KITTY_PID
     alias ssh "kitten ssh"
 end
 

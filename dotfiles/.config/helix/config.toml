@@ -43,83 +43,55 @@ display-inlay-hints = false # disable by default but can be enable w/ c-t
 
 
 [keys.normal]
-C-n = ":rla"
+C-r = ":rla"
 C-s = ":w"
 C-q = ":q!"
-C-v = "paste_before"
-C-t = ":toggle-option lsp.display-inlay-hints"
-# nvim compat, but not mandatory, leader-b/p are the same
 C-x = ":buffer-close"
-C-b = "buffer_picker"
-C-p = "file_picker"
-# C-r = ":rla"
+C-p = "file_picker_in_current_directory"
 
-# LSP
-# F1 = "hover"
-# F2 = "rename_symbol"
-# F5 = "workspace_diagnostics_picker"
-# F9 = "goto_reference"
-# F10 = "symbol_picker"
-# F11 = "jump_backward"
-# F12 = "goto_definition"
+C-v = "paste_before"
 
 C-h = "hover"
-C-r = "rename_symbol"
-C-m = "workspace_diagnostics_picker"
 C-u = "goto_reference"
-C-l = "symbol_picker"
 C-y = "goto_definition"
 
 # navigation
 C-down = "goto_next_paragraph"
 C-up = "goto_prev_paragraph"
-C-right = "move_next_long_word_start"
-C-left = "move_prev_long_word_end"
+C-right = "move_next_word_start"
+C-left = "move_prev_word_end"
+
 C-a ="goto_line_start"
 C-e ="goto_line_end"
+
 C-k = "half_page_down"
 C-i = "half_page_up"
 
 # windows
 C-pagedown = ":buffer-next"
 C-pageup = ":buffer-previous"
-# "C-/" = ":run-shell-command zellij run -fc -x 1%% -y 60%% --width 98%% --height 40%% -- fish"
 "C-/" = ":sh kitty @ launch --cwd=current --no-response  --type=window"
+
 # selection 
 "C-." = "expand_selection"  # original alt-o / alt-i => collide w/ zellij
 "C-," = "shrink_selection"
-"*" = ["move_char_right", "move_prev_word_start", "move_next_word_start", "search_selection"]
 
-# Lazygit
-# C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla", ":redraw",":toggle-option mouse",":toggle-option mouse"]
-# C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":rla"]
-# Reload doesn't work after zellij 
-# C-g" = [":run-shell-command zellij run -fc -x 2%% -y 2%% --width 96%% --height 96%% -- lazygit"]
-C-g = [":sh kitty @ launch --cwd=current --no-response  --type=overlay-main lazygit",":rla",":redraw"]
+# A voir par la suite
+C-b = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
 
 [keys.insert]
 C-s = ":w"
 C-q = ":q!"
 C-v = "paste_before"
-C-c = "toggle_comments"
-# LSP
-# F1 = "hover"
-# F2 = "rename_symbol"
-# F9 = "goto_reference"
-# F10 = "symbol_picker"
-# F11 = "jump_backward"
-# F12 = "goto_definition"
+C-c = "toggle_comments" 
 
 C-h = "hover"
-C-r = "rename_symbol"
-C-m = "workspace_diagnostics_picker"
 C-u = "goto_reference"
-C-l = "symbol_picker"
 C-y = "goto_definition"
 
 # navigation
-C-right = "move_next_long_word_start"
-C-left = "move_prev_long_word_end"
+C-right = "move_next_word_start"
+C-left = "move_prev_word_end"
 C-a ="goto_line_start"
 C-e ="goto_line_end"
 
@@ -128,12 +100,20 @@ C-pagedown = ":buffer-next"
 C-pageup = ":buffer-previous"
 C-space = "completion"
 
-# create a new minor mode bound to 'r'
-[keys.normal."r"]
-s = ":sh kitty @ launch --cwd=current  --type=overlay-main --no-response"
-# g = ":run-shell-command zellij run -fc -x 5% -y 5% --width 90% --height 90% -- lazygit"
-
-
 [keys.select]
 C-a ="goto_line_start"
 C-e ="goto_line_end"
+
+# create a new minor mode bound to 'r'
+[keys.normal."r"]
+# s = ":sh kitty @ launch --cwd=current  --type=overlay-main --no-response"
+m = ":sh kitty @ launch --cwd=current --no-response  --type=window make"
+c = [":sh kitty @ launch --cwd=current --no-response  --type=overlay-main copilot -i 'Lis le fichier %{buffer_name}' ",":rla",":redraw"]
+g = [":sh kitty @ launch --cwd=current --no-response  --type=overlay-main lazygit",":rla",":redraw"]
+j = ":open %sh{daily_journal}"
+
+
+[keys.normal."t"]
+h = ":toggle-option lsp.display-inlay-hints"
+a = ":toggle-option auto-format"
+t = ":set-language bash"

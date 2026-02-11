@@ -1,5 +1,5 @@
 # theme = "bogster"
-theme = "jkx_tokyo"
+theme = "jkx_tokyo_moon"
 # theme = "tokyonight_moon"
 # theme = "boo_berry"
 
@@ -14,6 +14,7 @@ end-of-line-diagnostics = "disable"
 # gutters = ["diagnostics", "spacer", "line-numbers", "spacer", "diff"]
 gutters = ["spacer","diff", "diagnostics","spacer"]
 completion-replace = true
+
 
 [editor.inline-diagnostics]
 cursor-line = "hint"
@@ -70,7 +71,7 @@ C-i = "half_page_up"
 # windows
 C-pagedown = ":buffer-next"
 C-pageup = ":buffer-previous"
-"C-/" = ":sh kitty @ launch --cwd=current --no-response  --type=window"
+"C-/" = ":sh kitty @ launch --cwd=$(dirname $(realpath %{buffer_name})) --no-response  --type=window"
 
 # selection 
 "C-." = "expand_selection"  # original alt-o / alt-i => collide w/ zellij
@@ -107,7 +108,7 @@ C-e ="goto_line_end"
 # create a new minor mode bound to 'r'
 [keys.normal."r"]
 # s = ":sh kitty @ launch --cwd=current  --type=overlay-main --no-response"
-m = ":sh kitty @ launch --cwd=current --no-response  --type=window make"
+m = [":sh kitty @ launch --cwd=$(dirname $(realpath %{buffer_name})) --no-response --type=window make"]
 c = [":sh kitty @ launch --cwd=current --no-response  --type=overlay-main copilot -i 'Lis le fichier %{buffer_name}' ",":rla",":redraw"]
 g = [":sh kitty @ launch --cwd=current --no-response  --type=overlay-main lazygit",":rla",":redraw"]
 j = ":open %sh{daily_journal}"

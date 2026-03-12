@@ -16,6 +16,7 @@ BLACKLIST = [
     ".local/bin/chezmoi-token",
     ".local/bin/chezmoi-filter",
     ".config/helix/languages.toml",
+    ".config/opencode",
 ]
 
 DEST = os.path.join(os.environ["PWD"], "dotfiles")
@@ -25,9 +26,7 @@ def clone():
     tmp_dir = tempfile.mkdtemp()
     tmp_dir = os.path.join(tmp_dir, "")
     cmd = 'chezmoi archive|tar xvfz - -C "%s" ' % tmp_dir
-    subprocess.run(
-        cmd, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
-    )
+    subprocess.run(cmd, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     return tmp_dir
 
 

@@ -15,7 +15,9 @@ set -gx BAT_THEME base16-256
 # Aliases
 #-----------------------------------------------------------------------------
 # load grc alias before 
-if test -e /etc/grc-rs.fish
+if type -q rgrc
+    rgrc --aliases | source
+else if test -e /etc/grc-rs.fish
     source /etc/grc-rs.fish
 else if test -e /etc/grc.fish
     source /etc/grc.fish

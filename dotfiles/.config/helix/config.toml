@@ -12,9 +12,8 @@ true-color = true
 # rulers=[100]
 end-of-line-diagnostics = "disable"
 # gutters = ["diagnostics", "spacer", "line-numbers", "spacer", "diff"]
-gutters = ["spacer","diff", "diagnostics","spacer"]
+gutters = ["line-numbers", "spacer", "diff", "diagnostics", "spacer"]
 completion-replace = true
-
 
 [editor.inline-diagnostics]
 cursor-line = "hint"

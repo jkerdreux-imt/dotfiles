@@ -1,0 +1,258 @@
+#!/usr/bin/env bash
+#
+# ct-manage — Container manager (busybox-style via symlinks)
+# ln -s ct-manage docker-manage → uses docker
+# ln -s ct-manage podman-manage → uses podman
+# Fallback: auto-detect docker > podman when called as ct-manage.
+#
+
+set -euo pipefail
+
+# ── Detect runtime from symlink name ──────────────────────────
+SELF=$(basename "$0")
+case "$SELF" in
+    docker-manage) RUNTIME=docker ;;
+    podman-manage) RUNTIME=podman ;;
+    *)
+        # fallback auto-detect
+        if command -v docker &>/dev/null; then
+            RUNTIME=docker
+        elif command -v podman &>/dev/null; then
+            RUNTIME=podman
+        else
+            echo "Error: neither docker nor podman found" >&2
+            exit 1
+        fi
+        ;;
+esac
+
+# ── Parse flags ─────────────────────────────────────────────────
+HOST_NET=""
+COMMAND=""
+EXTARGS=()
+PARSED_COMMAND=0
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --host)
+            HOST_NET=1
+            shift
+            ;;
+        --)
+            shift
+            while [[ $# -gt 0 ]]; do
+                EXTARGS+=("$1")
+                shift
+            done
+            ;;
+        *)
+            if [[ $PARSED_COMMAND -eq 0 ]]; then
+                COMMAND="$1"
+                PARSED_COMMAND=1
+            else
+                EXTARGS+=("$1")
+            fi
+            shift
+            ;;
+    esac
+done
+
+# ── Helpers ─────────────────────────────────────────────────────
+IMG_NAME=$(basename "$(pwd)")
+RAND_NAME="${IMG_NAME}-$(printf '%05d' $((RANDOM % 100000)))"
+
+# Network args (array for safe expansion)
+declare -a NET_ARGS
+if [[ -n "$HOST_NET" ]]; then
+    NET_ARGS=(--network host)
+else
+    if [[ "$RUNTIME" == "podman" ]]; then
+        NET_ARGS=(--add-host host.containers.internal:host-gateway)
+    else
+        NET_ARGS=(--add-host host.docker.internal:host-gateway)
+    fi
+fi
+
+# Build image if missing
+ensure_image() {
+    if [[ -z $($RUNTIME images -q "$IMG_NAME" 2>/dev/null) ]]; then
+        echo "[$RUNTIME] Image $IMG_NAME not found, building..."
+        $RUNTIME build -t "$IMG_NAME" .
+    fi
+}
+
+# Env-file args (array for safe expansion)
+declare -a ENV_ARGS
+if [[ -f ".envrc" ]]; then
+    ENV_ARGS=(--env-file .envrc)
+elif [[ -f ".env" ]]; then
+    ENV_ARGS=(--env-file .env)
+else
+    ENV_ARGS=()
+fi
+
+# Select a container via fzf or prompt; set CONTAINER variable
+select_container() {
+    local label="${1:-Select container}"
+    if command -v fzf &>/dev/null; then
+        CONTAINER=$(echo "$($RUNTIME ps --format "{{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}")" | \
+            sed -n '/./p' | \
+            fzf --height 70% --border --exact --header="$label" --delimiter=$'\t' --with-nth=2.. | \
+            cut -f2
+        )
+    else
+        echo ""
+        read -rp "Enter container ID or Name: " CONTAINER
+    fi
+
+    if [[ -z "$CONTAINER" ]]; then
+        echo "No container selected. Exiting." >&2
+        exit 1
+    fi
+}
+
+# ── Commands ────────────────────────────────────────────────────
+case "${COMMAND:-help}" in
+
+    build)
+        echo "[$RUNTIME] Building image: $IMG_NAME"
+        $RUNTIME build -t "$IMG_NAME" .
+        ;;
+
+    run)
+        ensure_image
+        echo "[$RUNTIME] Running container: $RAND_NAME from image: $IMG_NAME"
+        $RUNTIME run -it \
+            "${NET_ARGS[@]}" \
+            "${ENV_ARGS[@]}" \
+            --name "$RAND_NAME" \
+            --hostname "$RAND_NAME" \
+            "${EXTARGS[@]+"${EXTARGS[@]}"}" \
+            "$IMG_NAME"
+        ;;
+
+    test)
+        ensure_image
+        mkdir -p "$PWD/mnt"
+        echo "[$RUNTIME] Running container (rm+mnt): $RAND_NAME from image: $IMG_NAME"
+        $RUNTIME run -it --rm \
+            "${NET_ARGS[@]}" \
+            "${ENV_ARGS[@]}" \
+            --name "$RAND_NAME" \
+            --hostname "$RAND_NAME" \
+            -v "$PWD/mnt:/mnt" \
+            "${EXTARGS[@]+"${EXTARGS[@]}"}" \
+            "$IMG_NAME"
+        ;;
+
+    shell)
+        select_container "Shell into container"
+        echo "Getting shell into $CONTAINER..."
+        $RUNTIME exec -it "$CONTAINER" fish \
+            || $RUNTIME exec -it "$CONTAINER" bash \
+            || $RUNTIME exec -it "$CONTAINER" sh \
+            || echo "No shell (fish/bash/sh) found in $CONTAINER." >&2
+        ;;
+
+    stop)
+        if command -v fzf &>/dev/null; then
+            SELECTED=$(echo "$($RUNTIME ps --format "{{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}")" | \
+                sed -n '/./p' | \
+                fzf --multi --height 70% --border --exact \
+                    --delimiter=$'\t' --with-nth=2.. \
+                    --header="Stop containers (TAB to select)" | \
+                cut -f2)
+        else
+            echo ""
+            read -rp "Enter container IDs/Names (space-separated): " SELECTED
+        fi
+
+        [[ -z "$SELECTED" ]] && { echo "No container selected." >&2; exit 1; }
+        for c in $SELECTED; do
+            echo "Stopping $c..."
+            $RUNTIME stop "$c"
+        done
+        ;;
+
+    rm)
+        if command -v fzf &>/dev/null; then
+            SELECTED=$(echo "$($RUNTIME ps -a --format "{{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}")" | \
+                sed -n '/./p' | \
+                fzf --multi --height 70% --border --exact \
+                    --delimiter=$'\t' --with-nth=2.. \
+                    --header="Remove containers (TAB to select)" | \
+                cut -f2)
+        else
+            echo ""
+            read -rp "Enter container IDs/Names (space-separated): " SELECTED
+        fi
+
+        [[ -z "$SELECTED" ]] && { echo "No container selected." >&2; exit 1; }
+        for c in $SELECTED; do
+            echo "Removing $c..."
+            $RUNTIME rm -f "$c"
+        done
+        ;;
+
+    logs)
+        if command -v fzf &>/dev/null; then
+            CONTAINER=$(echo "$($RUNTIME ps -a --format "{{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}")" | \
+                sed -n '/./p' | \
+                fzf --height 70% --border --exact --header="View logs" --delimiter=$'\t' --with-nth=2.. | \
+                cut -f2
+            )
+        else
+            echo ""
+            read -rp "Enter container ID or Name: " CONTAINER
+        fi
+        [[ -z "$CONTAINER" ]] && { echo "No container selected." >&2; exit 1; }
+        echo "Logs for $CONTAINER:"
+        $RUNTIME logs --tail 100 -f "$CONTAINER" "${EXTARGS[@]+"${EXTARGS[@]}"}"
+        ;;
+
+    rmi)
+        if command -v fzf &>/dev/null; then
+            SELECTED=$(echo "$($RUNTIME images --format "{{.ID}}\t{{.Repository}}:{{.Tag}}\t{{.Size}}\t{{.CreatedAt}}")" | \
+                sed -n '/./p' | \
+                fzf --multi --height 70% --border --exact \
+                    --delimiter=$'\t' --with-nth=2.. \
+                    --header="Remove images (TAB to select)" | \
+                cut -f1)
+        else
+            echo ""
+            read -rp "Enter image names/tags (space-separated): " SELECTED
+        fi
+
+        [[ -z "$SELECTED" ]] && { echo "No image selected." >&2; exit 1; }
+        for i in $SELECTED; do
+            echo "Removing image $i..."
+            $RUNTIME rmi "$i"
+        done
+        ;;
+
+    ps)
+        $RUNTIME ps -a --format "{{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}" \
+            "${EXTARGS[@]+"${EXTARGS[@]}"}"
+        ;;
+
+    *)
+        echo "Usage: $SELF {build|run|test|shell|stop|rm|rmi|logs|ps|help} [-- <extra-args>]"
+        echo ""
+        echo "Commands:"
+        echo "  build   Build image using current directory name"
+        echo "  run     Run container with random name (-it by default)"
+        echo "  test    Run container with --rm and /mnt volume mount"
+        echo "  shell   Get interactive shell into a running container (fzf)"
+        echo "  stop    Stop running containers (fzf, multi-select)"
+        echo "  rm      Remove containers (stops first if running, fzf, multi-select)"
+        echo "  logs    View container logs (fzf, -f tail 100)"
+        echo "  ps      List containers"
+        echo "  rmi     Remove images (fzf, multi-select)"
+        echo ""
+        echo "Options:"
+        echo "  --host   Use --network host (skip add-host)"
+        echo "  --       Pass remaining args to the underlying command"
+        echo ""
+        echo "Runtime: $RUNTIME"
+        ;;
+esac

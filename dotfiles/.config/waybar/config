@@ -12,6 +12,7 @@
     "hyprland/workspaces"
   ],
   "modules-right": [
+    "hyprland/submap",
     "tray",
     "custom/network",
     "pulseaudio",
@@ -29,6 +30,9 @@
     "format": "{icon}",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  "hyprland/submap": {
+    "format": "🔧 {}"
   },
   "network": {
     "format-wifi": " {essid}",

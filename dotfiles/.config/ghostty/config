@@ -15,7 +15,8 @@ keybind = ctrl+shift+page_down=previous_tab
 
 # mics
 # theme = tokyonight
-theme = /usr/share/ghostty/themes/tokyonight
+theme = /usr/share/ghostty/themes/tokyonight_moon
+
 
 
 # no top-bar

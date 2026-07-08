@@ -39,7 +39,7 @@
 
 window {
 	transparency: "real";
-	background-color: #24283bCC; /*base00 + CC (80% opacity)*/
+	background-color: #24283bF2; /*base00 + F2 (95% opacity)*/
 	width: 35%;
 }
 

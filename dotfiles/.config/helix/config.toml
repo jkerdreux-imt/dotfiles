@@ -43,6 +43,13 @@ display-inlay-hints = false # disable by default but can be enable w/ c-t
 
 
 [keys.normal]
+# Cursor
+h = "insert_mode"                                                                                                                                    
+i = "move_visual_line_up"
+k = "move_visual_line_down"                                                                                                                          
+j = "move_char_left"                                                                                                                                
+l = "move_char_right"
+  
 C-r = ":rla"
 C-s = ":w"
 C-q = ":q!"
@@ -56,16 +63,16 @@ C-u = "goto_reference"
 C-y = "goto_definition"
 
 # navigation
-C-down = "goto_next_paragraph"
-C-up = "goto_prev_paragraph"
-C-right = "move_next_word_start"
-C-left = "move_prev_word_end"
+C-k = "goto_next_paragraph"
+C-i = "goto_prev_paragraph"
+C-l = "move_next_word_start"
+C-j = "move_prev_word_end"
 
 C-a ="goto_line_start"
 C-e ="goto_line_end"
 
-C-k = "half_page_down"
-C-i = "half_page_up"
+# C-k = "half_page_down"
+# C-i = "half_page_up"
 
 # windows
 C-pagedown = ":buffer-next"
@@ -90,10 +97,13 @@ C-u = "goto_reference"
 C-y = "goto_definition"
 
 # navigation
-C-right = "move_next_word_start"
-C-left = "move_prev_word_end"
+# C-k = "goto_next_paragraph"
+# C-i = "goto_prev_paragraph"
+C-l = "move_next_word_start"
+C-j = "move_prev_word_end"
 C-a ="goto_line_start"
 C-e ="goto_line_end"
+
 
 # windows
 C-pagedown = ":buffer-next"
@@ -101,6 +111,13 @@ C-pageup = ":buffer-previous"
 C-space = "completion"
 
 [keys.select]
+# cursor
+i = "extend_visual_line_up"
+k = "extend_visual_line_down"
+j = "extend_char_left"
+l = "extend_char_right"
+C-k = "goto_next_paragraph"
+C-i = "goto_prev_paragraph"
 C-a ="goto_line_start"
 C-e ="goto_line_end"
 

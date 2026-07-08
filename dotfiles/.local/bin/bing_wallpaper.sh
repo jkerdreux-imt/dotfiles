@@ -10,8 +10,8 @@ FILENAME="$WALLPAPER_DIR/bing_$(date +%Y-%m-%d).jpg"
 # Function to set wallpaper (supports swww or hyprpaper)
 set_wallpaper() {
     local file="$1"
-    if command -v swww &> /dev/null; then
-        swww img "$file"
+    if command -v awww &> /dev/null; then
+        awww img "$file"
     elif command -v hyprctl &> /dev/null; then
         hyprctl hyprpaper preload "$file"
         hyprctl hyprpaper wallpaper ",$file"

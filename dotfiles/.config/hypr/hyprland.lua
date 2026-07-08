@@ -186,7 +186,8 @@ hl.bind(mainMod .. " + ALT + l", hl.dsp.window.swap({ direction = "r" }))
 hl.bind(mainMod .. " + ALT + i", hl.dsp.window.swap({ direction = "u" }))
 hl.bind(mainMod .. " + ALT + k", hl.dsp.window.swap({ direction = "d" }))
 
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ state = 1 }))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
+hl.bind(mainMod .. " + ALT + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind(mainMod .. " + ALT + BackSpace", hl.dsp.window.close())
 hl.bind(mainMod .. " + ALT + N", hl.dsp.focus({ workspace = "empty" }))
 
@@ -244,6 +245,14 @@ hl.bind(mainMod .. "+Next", hl.dsp.exec_cmd("playerctl previous"), { locked = tr
 hl.bind(mainMod .. "+End", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 
 -- 5. Window Rules
+
+-- Maximized windows get a cyan-to-violet gradient border
+hl.window_rule({
+    name = "maximize_border",
+    match = { fullscreen = 1 },
+    border_color = { colors = {"rgba(cc55ffee)", "rgba(33ccffee)"}, angle = 45 },
+})
+
 hl.layer_rule({ name = "rofi-dim", match = { namespace = "rofi" }, dim_around = true })
 
 hl.window_rule({
